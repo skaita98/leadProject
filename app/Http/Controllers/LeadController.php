@@ -86,8 +86,7 @@ class LeadController extends Controller
      */
     public function edit($id)
     {
-        $leadEdits = Lead::find($id);
-        return view('viewLead')->with('lea', $leadEdits);
+       //
     }
 
     /**
@@ -97,13 +96,15 @@ class LeadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function update(Request $request, $id)
     {
-        $lead = Lead::find($id);
-        $lead->nom = $request->name;
+       $lead = Lead::find($id);
+        $lead->nom = $request->nom;
         $lead->prenom = $request->prenom;
-        $lead->mail = $request->email;
-        $lead->tel = $request->phone;
+        $lead->mail = $request->mail;
+        $lead->tel = $request->tel;
         $lead->entreprise = $request->entreprise;
         $lead->operation = $request->operation;
         $lead->type_de_bien = $request->type_de_bien;
@@ -113,7 +114,7 @@ class LeadController extends Controller
         $lead->commentaire = $request->commentaire;
         $lead->source = $request->source;
         $lead->update();
-        return redirect()->with('status', 'Lead Added Successfully');
+        return redirect('/lead')->with('status', 'Lead Added Successfully');
 
     }
 
@@ -123,11 +124,11 @@ class LeadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
            $lead = Lead::find($id);
            $lead->delete();
   
-        return redirect('/');
+        return redirect('/lead');
     }
 }

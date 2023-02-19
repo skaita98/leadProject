@@ -92,25 +92,17 @@
                 <td>{{ $lead->commentaire }}</td>
                 <td>{{ $lead->source }}</td>
                 <td>
-                    <button id="edit-btn">Edit</button><br>
-                    <button>View</button><br>
-                    <button>Archive</button>
+                  <a href="#view{{$lead->id}}" data-bs-toggle="modal" class="btn btn-danger"><i class='fa fa-trash'></i> View</a>
+                  <a href="#edit{{$lead->id}}" data-bs-toggle="modal" class="btn btn-success"><i class='fa fa-edit'></i> Edit</a> 
+                  <a href="#delete{{$lead->id}}" data-bs-toggle="modal" class="btn btn-danger"><i class='fa fa-trash'></i> Delete</a>
+                    @include('action')
                 </td>
                 
             </tr>
         @endforeach
     </tbody>
 </table>
-<br><br><br>
-
-
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Enter the updated information:</p>
-    <input type="text" id="updated-info">
-  </div>
-</div>
+<br><br>
 
 
 <button><a href="/" style="text-decoration-line: none">Create Lead</a></button>
